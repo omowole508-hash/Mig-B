@@ -2643,3 +2643,35 @@ async function monitor() {
           delete positions[mint];
           continue;
         }
+      }
+    }
+  } finally {
+    monitorRunning = false;
+  }
+}
+
+module.exports = {
+  bot: {
+    monitor,
+    queueBuyRequest,
+    executeSell,
+  },
+};
+
+// boot
+console.log("🚀 Mig-B bot initialized");
+if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
+  startCallbackPolling();
+}
+
+setInterval(() => {
+  if (Object.keys(positions).length > 0) {
+    monitor().catch((e) => console.error("Monitor loop crash:", e.message));
+  }
+}, CONFIG.MONITOR_INTERVAL_MS);
+
+setInterval(() => {
+  if (pnlTrades.length > 0) {
+    sendSessionSummary();
+  }
+}, 3 * 60 * 60 * 1000);
