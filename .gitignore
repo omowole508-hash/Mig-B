@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+env.txt
+brain_memory.json
+trend_memory.json
+observe_memory.json
+npm-debug.log*
+.DS_Store

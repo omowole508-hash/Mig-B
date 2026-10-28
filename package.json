@@ -1,0 +1,22 @@
+{
+  "name": "mig-b",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mig-B Solana sniper bot for Railway deployment",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "node bot.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@solana/spl-token": "^0.4.9",
+    "@solana/web3.js": "^1.95.0",
+    "axios": "^1.7.7",
+    "bs58": "^5.0.1",
+    "dotenv": "^16.4.5",
+    "ws": "^8.18.0"
+  }
+}
